@@ -1,0 +1,77 @@
+﻿@using blogmvc.Models
+@model Option
+
+@{
+    ViewBag.Title = "User";
+    //Layout = "~/Views/Admin/_ViewStart.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>User Profile</h2>
+
+    @using (Html.BeginForm("EditOption", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.siteurl, "Siteurl:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.siteurl)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.home, "Home:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.home)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.blogname, "Blogname:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.blogname)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.blogdescription, "Blogdescription:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.blogdescription)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_can_register, "User can register:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("UserCanRegister", (IEnumerable<SelectListItem>)ViewBag.UserCanRegister, new { id = "UserCanRegister", @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.post_per_page, "Post per page:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.post_per_page)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.admin_email, "Admin email:", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.admin_email)
+                </div>
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+
+        </div>
+
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
